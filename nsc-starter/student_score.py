@@ -1,5 +1,8 @@
 """Edit this file to implement ONE motivated graph-aware heuristic.
 
+WZH owns this scoring interface. See ../doc/WORK_PLAN.md for the
+residual and ablation contract and the handoff to ZDY.
+
 The evaluator passes architecture configuration only. Do not load labels,
 look up architecture IDs, or fit to the final split. Record all development
 choices. The unedited template deliberately returns the original baseline.
