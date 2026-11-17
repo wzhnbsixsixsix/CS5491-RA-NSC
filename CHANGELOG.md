@@ -1,5 +1,11 @@
 # 修改记录
 
+## 2026-11-17 · GitHub 仓库更名
+
+- GitHub 仓库更名为 `CS5491-RA-NSC`，并已同步本地 `origin` 地址。
+- `README.md` 采用新的仓库名并保留项目全称。
+- `README.md` 和 `doc/WORK_PLAN.md` 修正 Proposal 链接，对应远端已更新的 `doc/proposal.pdf`。
+
 ## 2026-11-17 · Proposal 分工
 
 - `README.md` 增加仓库入口、Proposal、分工、修改记录和开发集复现命令。

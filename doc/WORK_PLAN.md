@@ -1,6 +1,6 @@
 # CS5491 两人分工
 
-本计划按 [Proposal](project_proposal.pdf) 的 Method and assumptions、Data and evaluation、Feasibility and schedule 三部分安排。日期采用 Proposal 的里程碑。
+本计划按 [Proposal](proposal.pdf) 的 Method and assumptions、Data and evaluation、Feasibility and schedule 三部分安排。日期采用 Proposal 的里程碑。
 
 | 负责人 | 代码与实验 | 报告与交付物 |
 | --- | --- | --- |

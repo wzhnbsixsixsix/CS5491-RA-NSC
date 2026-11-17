@@ -1,8 +1,10 @@
-# Residual-Aware Neural Spectral Capacity for Transformer Architecture Selection
+# CS5491-RA-NSC
+
+Residual-Aware Neural Spectral Capacity for Transformer Architecture Selection
 
 CS5491 小组成员为 **WZH** 和 **ZDY**。项目研究在 FFN 子块中显式建模恒等捷径，能否改善 Transformer 架构排序和参数预算下的选型。
 
-- [项目 Proposal](doc/project_proposal.pdf)
+- [项目 Proposal](doc/proposal.pdf)
 - [两人分工、交接和验收](doc/WORK_PLAN.md)
 - [Starter 数据、指标和运行说明](nsc-starter/README.md)
 - [修改记录](CHANGELOG.md)
