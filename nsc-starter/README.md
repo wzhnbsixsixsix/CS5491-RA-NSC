@@ -1,17 +1,18 @@
 # NSC course-project starter — CS5491, 2026/27 Semester A
 
-A CPU-only experiment for studying an architecture heuristic. Python 3.9 or later; standard library only. No installation, API key, model download or training is needed for the core project.
+A CPU-only experiment for studying an architecture heuristic. The starter baseline and its checks use the Python 3.9+ standard library. This project's residual scorer was verified with Python 3.12 and NumPy from [requirements.txt](../requirements.txt). The architecture and evaluation data are included.
 
 ## Run
 
-Unzip the starter, open a terminal in its directory, and run:
+Set up the environment from the [project README](../README.md), then run from this directory.
 
 ```sh
 python3 check_starter.py
+PYTHONPATH=. python3 ../Milestone/check_residual.py
 python3 evaluate.py --split development --output development_results.json
 ```
 
-Edit `student_score.py`. Implement `score(config)` and a mechanism ablation in `ablation(config)`. Both return a finite scalar; higher predicts better trained performance. The supplied template returns original NSC, so it runs but is not a completed project. Configuration input contains no architecture ID or outcome. Do not read label files or use configuration fingerprints as outcome lookups inside a scorer.
+`student_score.py` implements the residual estimator in `score(config)` and its shortcut ablation in `ablation(config)`. Both return a finite scalar, with larger values predicting better trained performance. Both accept only architecture configuration.
 
 After freezing your method, development choices and code version:
 
@@ -19,21 +20,22 @@ After freezing your method, development choices and code version:
 python3 evaluate.py --split final --output final_results.json
 ```
 
-Final outcomes are held out by protocol, not hidden by software. Do not tune to them. The evaluator loads only the chosen split's label file. Expect seconds on an ordinary laptop; record your actual hardware and elapsed time. Scoring times in the JSON share a cache, so they are diagnostics, not fair cold-start comparisons.
+Final outcomes are held out by protocol. The evaluator loads only the chosen split's label file. The development evaluation took about two minutes on an Apple M1. Scoring times reflect method order and shared MP and FFN caches. Use independent processes for cold-start benchmarks.
 
 ## Files and schema
 
 - `nsc.py`: MP integral, per-layer and original NSC, an illustrative positional score, and a resource calculator.
-- `student_score.py`: your two functions. `--student path/to/module.py` selects another implementation.
+- `student_score.py`: residual scorer and shortcut ablation. `--student path/to/module.py` selects another implementation.
 - `evaluate.py`: rank correlations, size-controlled pair comparisons, and finite-pool selection.
 - `check_starter.py`: numerical identities, convergence, tie handling, resource arithmetic, split and data-integrity checks.
+- [`Milestone/check_residual.py`](../Milestone/check_residual.py): zero and weak branches, SVD reference, layer permutation, and sampling error checks.
 - `data/architectures.json`: 200 IDs mapped to full archived configurations. The scorer uses `d_model`, `n_layer`, `n_head`, and `d_inner`; the last two may be per-layer lists. Hidden widths are 64, 128, 256 and 512; depth ranges from 2 to 16. Other fields are preserved for inspecting architectural assumptions.
 - `data/resources.json`: archived parameter fields. Use `total` directly; `nonembedding` and component entries overlap. Never sum every field.
 - `data/splits.json`: 100 development and 100 final architectures, assigned within hidden-width groups by a fixed configuration hash, without examining performance.
 - `data/development_labels.json`: validation perplexity for development architectures.
 - `data/final_labels.json`: test perplexity for final architectures.
 - `data/provenance.json`: source attribution, SHA-256 hashes, transformations and limitations.
-- `expected_development.json`: reference output with the unedited student template; timing fields are omitted.
+- `expected_development.json`: course reference output with the original baseline-only student template; timing fields are omitted.
 
 ## Baseline conventions
 

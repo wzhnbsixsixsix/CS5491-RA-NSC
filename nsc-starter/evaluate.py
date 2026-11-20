@@ -103,6 +103,7 @@ def select_trials(pool, scores, k, ppl, seed):
 def evaluate(split, student_path):
     """Load only the chosen split's labels and return JSON-serializable results."""
     def read(name):
+        """Read a JSON input from the bundled course data directory."""
         return json.loads((ROOT / 'data' / name).read_text())
     configs = read('architectures.json')
     resources = read('resources.json')
@@ -154,6 +155,7 @@ def evaluate(split, student_path):
 
 
 def main():
+    """Evaluate the requested split, summarize rankings, and optionally save JSON."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--split', choices=('development', 'final'), default='development')
     parser.add_argument('--student', type=Path, default=ROOT / 'student_score.py')

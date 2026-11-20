@@ -18,6 +18,8 @@
 
 ### 11 月 19 日 · 开发集
 
+里程碑材料于 2026-11-20 整理，见 [报告草稿](../Milestone/milestone_report.pdf)、[开发集结果](../Milestone/results/milestone_development.json) 和 [机制检查](../Milestone/results/milestone_mechanism.json)。两项评分已在开发集联调，最终集留待冻结后评估。
+
 - **WZH** 交付候选估计器、消融和机制验证结果。
 - **ZDY** 复现 starter 基线并完成集成开发集比较。记录对负 perplexity 的 Spearman、Kendall tau-b、并列和评分耗时，以及等隐藏宽度且总参数 min/max ≥ 0.90 的配对统计与配对数。
 - **ZDY** 汇总 10M、20M、30M、50M 总参数上限下的 top-1 和 top-3 模拟选型。各方法使用相同可行池，报告最佳选中 PPL 和相对可行最优的 regret，纳入原始 NSC、位置启发式、总参数、参考 FLOPs、完整方法、消融和重复均匀随机选型。

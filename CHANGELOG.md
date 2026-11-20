@@ -1,5 +1,11 @@
 # 修改记录
 
+## 2026-11-20 · 项目里程碑
+
+- 方法与代码（WZH 原定负责范围）。`nsc-starter/student_score.py` 实现 32 次固定种子、按形状缓存的成对 Monte Carlo 残差估计与去捷径消融。`nsc-starter/nsc.py` 提取共用注意力项，保持原始 NSC 计算口径。`requirements.txt` 固定 NumPy 版本。
+- 实验（ZDY 原定负责范围）。`Milestone/check_residual.py` 增加零分支、弱分支、SVD 对照、层换序、配置形式一致性及采样误差检查。归档 `Milestone/results/milestone_mechanism.json` 和 `Milestone/results/milestone_development.json`，覆盖 100 个开发架构和 8 种预算与候选数量组合。`nsc-starter/check_starter.py` 与 `nsc-starter/evaluate.py` 补充入口和数据读取说明。独立复跑自检、机制检查和开发集评估，归档数值在浮点容差内一致，最终集留待方法冻结后评估。
+- 报告与交接。`Milestone/milestone_report.pdf` 新增课程格式的英文报告草稿，`Milestone/build_milestone_report.py` 根据同目录归档生成表格和 PDF。`Milestone/README.md` 提供提交版本、文件入口和英文复现说明。`README.md`、`nsc-starter/README.md` 和 `doc/WORK_PLAN.md` 更新运行环境、命令、预期耗时、结果与当前进度。发布版本和归档由 `milestone` 标签追溯。
+
 ## 2026-11-17 · GitHub 仓库更名
 
 - GitHub 仓库更名为 `CS5491-RA-NSC`，并已同步本地 `origin` 地址。

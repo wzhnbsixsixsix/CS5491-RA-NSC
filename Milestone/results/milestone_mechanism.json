@@ -1,0 +1,141 @@
+{
+  "checks": [
+    "zero branch",
+    "Cholesky vs SVD",
+    "weak branch",
+    "layer reorder",
+    "scalar vs list configuration",
+    "ablation separation"
+  ],
+  "draws": 32,
+  "seed": 202627,
+  "reference_seed": 202628,
+  "weak_branch": {
+    "strength": 0.001,
+    "symmetric": [
+      2.5002287566688874e-13,
+      1.9999990002355223e-06
+    ],
+    "skew": [
+      9.99999749906673e-07,
+      1.9999990002355223e-06
+    ]
+  },
+  "comparisons": [
+    {
+      "hidden_width": 8,
+      "ffn_width": 16,
+      "reference_draws": 4096,
+      "estimate_seconds": 0.0007953329986776225,
+      "reference_seconds": 0.17231787499622442,
+      "scores": {
+        "residual": {
+          "estimate": 2.0346953870301557e-05,
+          "reference": 1.79737778902519e-05,
+          "absolute_error": 2.3731759800496574e-06,
+          "relative_error": 0.13203545712761658,
+          "combined_standard_error": 1.6906970193727835e-06
+        },
+        "ablation": {
+          "estimate": 8.819467848264321e-05,
+          "reference": 8.204101008803919e-05,
+          "absolute_error": 6.153668394604021e-06,
+          "relative_error": 0.07500722367996744,
+          "combined_standard_error": 6.958793588589647e-06
+        }
+      }
+    },
+    {
+      "hidden_width": 64,
+      "ffn_width": 512,
+      "reference_draws": 256,
+      "estimate_seconds": 0.00888870799826691,
+      "reference_seconds": 0.07327987500320887,
+      "scores": {
+        "residual": {
+          "estimate": 0.04101710145035553,
+          "reference": 0.0414287545935298,
+          "absolute_error": 0.000411653143174269,
+          "relative_error": 0.009936411248977288,
+          "combined_standard_error": 0.00048547819937270955
+        },
+        "ablation": {
+          "estimate": 0.16591337834675504,
+          "reference": 0.16709523431501383,
+          "absolute_error": 0.0011818559682587881,
+          "relative_error": 0.007072948388406527,
+          "combined_standard_error": 0.0018156674449149393
+        }
+      }
+    },
+    {
+      "hidden_width": 128,
+      "ffn_width": 1024,
+      "reference_draws": 256,
+      "estimate_seconds": 0.03675899999507237,
+      "reference_seconds": 0.2782310409966158,
+      "scores": {
+        "residual": {
+          "estimate": 0.334441892735238,
+          "reference": 0.33333515859228285,
+          "absolute_error": 0.0011067341429551458,
+          "relative_error": 0.0033201842482773977,
+          "combined_standard_error": 0.00224101901141122
+        },
+        "ablation": {
+          "estimate": 1.3307658860114415,
+          "reference": 1.3297270707527375,
+          "absolute_error": 0.0010388152587039734,
+          "relative_error": 0.0007812244193208133,
+          "combined_standard_error": 0.008193052604768165
+        }
+      }
+    },
+    {
+      "hidden_width": 256,
+      "ffn_width": 1536,
+      "reference_draws": 256,
+      "estimate_seconds": 0.13907150000159163,
+      "reference_seconds": 1.0516184169973712,
+      "scores": {
+        "residual": {
+          "estimate": 2.000556300799062,
+          "reference": 2.003719965943617,
+          "absolute_error": 0.0031636651445547948,
+          "relative_error": 0.0015788958528767875,
+          "combined_standard_error": 0.008663280792870001
+        },
+        "ablation": {
+          "estimate": 7.7508016600478475,
+          "reference": 7.7822430490445615,
+          "absolute_error": 0.031441388996714004,
+          "relative_error": 0.004040144826956299,
+          "combined_standard_error": 0.03176460182179057
+        }
+      }
+    },
+    {
+      "hidden_width": 512,
+      "ffn_width": 2048,
+      "reference_draws": 256,
+      "estimate_seconds": 0.5881294170030742,
+      "reference_seconds": 4.126416749997588,
+      "scores": {
+        "residual": {
+          "estimate": 10.61630985803785,
+          "reference": 10.650223299494462,
+          "absolute_error": 0.03391344145661179,
+          "relative_error": 0.0031842939347780223,
+          "combined_standard_error": 0.03993660664040888
+        },
+        "ablation": {
+          "estimate": 38.98085760281528,
+          "reference": 39.09897969301521,
+          "absolute_error": 0.11812209019993247,
+          "relative_error": 0.0030211041599388397,
+          "combined_standard_error": 0.13411148151995217
+        }
+      }
+    }
+  ]
+}

@@ -53,10 +53,15 @@ def layers(config):
     return d, heads, inner
 
 
+def attention_capacity(d, heads):
+    """Return the reference per-head Q/K/V and shared output projection score."""
+    return 3 * heads * psi_mp(d, d // heads) + psi_mp(d, d)
+
+
 def layer_capacities(config):
     """Each layer: 3 H psi(d,d/H) + psi(d,d) + 2 psi(d,f)."""
     d, heads, inner = layers(config)
-    return [3 * h * psi_mp(d, d // h) + psi_mp(d, d) + 2 * psi_mp(d, f)
+    return [attention_capacity(d, h) + 2 * psi_mp(d, f)
             for h, f in zip(heads, inner)]
 
 

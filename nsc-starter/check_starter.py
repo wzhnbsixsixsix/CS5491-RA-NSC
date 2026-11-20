@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parent
 
 
 def main():
+    """Verify the course baseline, evaluation helpers, and archive integrity."""
     # MP at zero power, transpose invariance, small-signal first moment,
     # and integration convergence. Bounds from log(1+x)<=x and Jensen.
     for m, n in [(1, 1), (64, 64), (128, 32), (512, 1601)]:
