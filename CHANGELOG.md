@@ -1,5 +1,9 @@
 # 修改记录
 
+## 2026-11-21 · 补充捷径分基线待办
+
+- 在 `doc/WORK_PLAN.md` 记录「原始 NSC + 捷径分」基线的逐层公式、比较目的和后续验证方式。状态为暂缓实施，本次更新限于文档。
+
 ## 2026-11-21 · 阶段报告的 Canvas 提交入口
 
 - `Milestone/build_milestone_report.py` 和生成的 `Milestone/milestone_report.pdf` 在第一页加入可见、可点击的 GitHub `milestone` 链接，并标明评分与消融、评估及机制检查的代码入口。报告同时链接运行说明、数据来源、生成脚本和两份结果归档。
