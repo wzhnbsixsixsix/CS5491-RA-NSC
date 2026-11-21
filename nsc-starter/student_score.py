@@ -57,10 +57,12 @@ def ffn_capacity(d, f):
 def architecture_score(config, component):
     """Keep the reference attention term and sum the chosen FFN contribution."""
     d, heads, inner = layers(config)
-    return math.fsum(
+    # Materialize the terms before summing: a live generator interleaved with
+    # NumPy matrix products misaccumulates under math.fsum on NumPy >= 2.4.
+    return math.fsum([
         attention_capacity(d, h) + ffn_capacity(d, f)[component]
         for h, f in zip(heads, inner)
-    )
+    ])
 
 
 def score(config):

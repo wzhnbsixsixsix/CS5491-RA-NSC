@@ -3,6 +3,10 @@
 ## 2026-11-21 · 补充捷径分基线待办
 
 - 在 `doc/WORK_PLAN.md` 记录「原始 NSC + 捷径分」基线的逐层公式、比较目的和后续验证方式。状态为暂缓实施，本次更新限于文档。
+## 2026-11-21 · 评分器求和加固（可复现性）
+
+- `nsc-starter/student_score.py` 的 `architecture_score` 把 `math.fsum` 的生成器参数改为先物化的列表。NumPy ≥ 2.4（配合 Python 3.14）下，生成器迭代中执行大矩阵乘法会让 `math.fsum` 累加出错并返回 0.0；列表在求和前已全部算完，不再触发。求和的项与顺序完全不变，评分逐位一致。
+- 双环境交叉验证：同一份改动在钉版环境（Python 3.14.6 + NumPy 2.3.5）与裸装环境（NumPy 2.4.6）各跑一次完整开发集评估，均与 `Milestone/results/milestone_development.json` 全部 351 个字段逐位一致（计时字段除外）。`requirements.txt` 的版本固定仍保留，作为基准环境说明。
 
 ## 2026-11-21 · 阶段报告的 Canvas 提交入口
 
