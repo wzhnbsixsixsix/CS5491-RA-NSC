@@ -13,7 +13,7 @@ This project asks whether including the feed-forward network's identity shortcut
 | Benchmark evaluation and course data | [evaluate.py](../nsc-starter/evaluate.py), [data and provenance](../nsc-starter/data/provenance.json) |
 | Numerical checks and report source | [check_residual.py](check_residual.py), [build_milestone_report.py](build_milestone_report.py) |
 
-The Canvas submission consists of the PDF, the [GitHub repository URL](https://github.com/wzhnbsixsixsix/CS5491-RA-NSC), and the [`milestone` tag](https://github.com/wzhnbsixsixsix/CS5491-RA-NSC/tree/milestone). The [change log](../CHANGELOG.md) traces changes to the scoring code, experiments, and report.
+Upload the English report PDF to Canvas. Its first page shows the full [GitHub milestone URL](https://github.com/wzhnbsixsixsix/CS5491-RA-NSC/tree/milestone) and links directly to the scorer, evaluator, mechanism checks, run commands, and archived results. The [change log](../CHANGELOG.md) traces changes to the scoring code, experiments, and report.
 
 ## Reproduce the report results
 

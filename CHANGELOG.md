@@ -1,5 +1,10 @@
 # 修改记录
 
+## 2026-11-21 · 阶段报告的 Canvas 提交入口
+
+- `Milestone/build_milestone_report.py` 和生成的 `Milestone/milestone_report.pdf` 在第一页加入可见、可点击的 GitHub `milestone` 链接，并标明评分与消融、评估及机制检查的代码入口。报告同时链接运行说明、数据来源、生成脚本和两份结果归档。
+- `Milestone/README.md` 记录从 Canvas 上传的 PDF 如何找到上述文件。报告继续使用原有三页版式，代码和实验结果链接指向已发布的 `milestone` 标签。
+
 ## 2026-11-20 · 项目里程碑
 
 - 方法与代码（WZH 原定负责范围）。`nsc-starter/student_score.py` 实现 32 次固定种子、按形状缓存的成对 Monte Carlo 残差估计与去捷径消融。`nsc-starter/nsc.py` 提取共用注意力项，保持原始 NSC 计算口径。`requirements.txt` 固定 NumPy 版本。

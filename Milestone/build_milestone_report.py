@@ -15,6 +15,8 @@ from reportlab.platypus import (
 )
 
 MILESTONE = Path(__file__).resolve().parent
+REPOSITORY = 'https://github.com/wzhnbsixsixsix/CS5491-RA-NSC'
+MILESTONE_URL = f'{REPOSITORY}/tree/milestone'
 METHODS = {
     'original_nsc': 'NSC',
     'position_example': 'Position',
@@ -58,11 +60,16 @@ def build_report(output, development, mechanism):
     center = ParagraphStyle('Center', parent=body, alignment=1)
     centered_title = ParagraphStyle('Title', parent=center, fontName='TNR-Bold')
     cell = ParagraphStyle('Cell', parent=body, spaceAfter=0)
+    code_guide = ParagraphStyle('CodeGuide', parent=body, spaceAfter=4)
     story = []
 
     def paragraph(content, style=body):
         """Append a paragraph with the selected report style."""
         story.append(Paragraph(content, style))
+
+    def milestone_file(path, label=None):
+        """Link to a file in the exact code and results snapshot."""
+        return f'<link href="{REPOSITORY}/blob/milestone/{path}"><u>{label or path}</u></link>'
 
     def table(rows, widths):
         """Append a result table with a repeating header."""
@@ -121,6 +128,29 @@ def build_report(output, development, mechanism):
               'total parameters, reference FLOPs, and uniform random selection. Ranking uses '
               'negative PPL because higher architecture scores predict lower PPL. Budget selection '
               'uses the same feasible pool and number of picks for every method.')
+    paragraph('Code and reproducibility', heading)
+    paragraph(f'<link href="{MILESTONE_URL}"><u>{MILESTONE_URL}</u></link>', code_guide)
+    paragraph(
+        '<b>Start here.</b> '
+        f'{milestone_file("nsc-starter/student_score.py")} implements the RA score and shortcut '
+        f'ablation. {milestone_file("nsc-starter/evaluate.py")} runs the ranking and budgeted '
+        f'selection. {milestone_file("Milestone/check_residual.py")} checks the mechanism and '
+        'sampling error.',
+        code_guide,
+    )
+    paragraph(
+        '<b>Reproduce.</b> '
+        f'{milestone_file("Milestone/README.md", "Run commands")}, '
+        f'{milestone_file("nsc-starter/data/provenance.json", "dataset provenance")}, '
+        f'and {milestone_file("Milestone/build_milestone_report.py", "report builder")}.',
+        code_guide,
+    )
+    paragraph(
+        '<b>Archived results.</b> '
+        f'{milestone_file("Milestone/results/milestone_development.json", "Development ranking and selection")} '
+        f'and {milestone_file("Milestone/results/milestone_mechanism.json", "mechanism and sampling checks")}.',
+        code_guide,
+    )
     story.append(PageBreak())
 
     paragraph('4. Mechanism and numerical checks', heading)
@@ -198,9 +228,8 @@ def build_report(output, development, mechanism):
     paragraph(f'The first RA scoring pass, including both FFN means, took {seconds["student"]:.1f} s on '
               'an Apple M1 MacBook Pro with 16 GB RAM (Python 3.12.14, NumPy 2.3.5, Accelerate). '
               f'Original NSC took {seconds["original_nsc"]:.2f} s. The ablation reuses the FFN means. '
-              'The README gives the exact commands and paths to '
-              'the JSON outputs. <link href="https://github.com/wzhnbsixsixsix/CS5491-RA-NSC/tree/milestone">'
-              '<u>Project repository (milestone tag)</u></link>.')
+              f'The {milestone_file("Milestone/README.md", "milestone README")} gives the exact '
+              'commands and paths to the JSON outputs.')
     paragraph('References', heading)
     paragraph('[1] C. Zhu, R. Zhao, and Z. Lu. <i>Neural Spectral Capacity</i>. '
               '<link href="https://arxiv.org/abs/2609.23087"><u>arXiv:2609.23087</u></link>, 2026.')
